@@ -291,25 +291,24 @@
 	// .step-success__row
 	&__row {
 		display: flex;
-		column-gap: rem(40);
+		flex-wrap: wrap;
+		gap: rem(20);
 		justify-content: center;
-		@media (max-width: rem(1200)) {
-			column-gap: rem(20);
+		@media (min-width:$mobile){
+			gap: rem(30); 
 		}
-		@media (max-width: $tablet) {
-			flex-wrap: wrap;
-			row-gap: rem(20);
+		@media (min-width: $tablet) {
+			justify-content: space-between; 
 		}
 	}
 	// .step-success__card
 	&__card {
-		flex: 0 1 31.11%;
-		@media (max-width: $tablet) {
+		flex: 0 1 100%;
+		@media (min-width:$mobile){
 			flex: 0 1 48%;
-			//width: 100%;
 		}
-		@media (max-width: $mobile) {
-			flex: 0 1 100%;
+		@media (min-width: $tablet) {
+			flex: 0 1 31.11%;
 		}
 	}
 }
@@ -317,6 +316,7 @@
 .card-step {
 	background: #f8f9fa;
 	display: flex;
+	//width: 100%;
 	align-items: center;
 	padding: rem(30);
 	@media (max-width: rem(1200)) {
