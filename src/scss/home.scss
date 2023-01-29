@@ -9,6 +9,9 @@
 	// .page__step-success
 	&__step-success {
 	}
+	// .page__news
+	&__news {
+	}
 }
 //========================================================================================================================================================
 //==== start SEO ====================================================================================================================================================
@@ -186,7 +189,7 @@
 		justify-content: space-between;
 		color: #000;
 		&:not(:last-child) {
-			margin-bottom: rem(34);
+			@include adaptiveValue("margin-bottom", 34, 20);
 		}
 		column-gap: rem(20);
 		@media (max-width: $mobile) {
@@ -211,7 +214,7 @@
 		}
 		@media (max-width: $mobile) {
 			flex: 0 1 100%;
-			margin-bottom: rem(15);
+			//margin-bottom: rem(15);
 		}
 	}
 	// .items-page__block
@@ -219,16 +222,19 @@
 		flex: 0 1 51.79%;
 		display: flex;
 		flex-direction: column;
+		@media (max-width:$mobile){
+			padding: rem(32);
+			@include adaptiveValue("padding-top", 32, 15);
+			@include adaptiveValue("padding-bottom", 32, 15);  
+		}
 	}
 	// .items-page__title
 	&__title {
 		font-size: rem(22);
-		@include adaptiveValue("font-size", 22, 18, 1200, 992, 1);
-		line-height: math.div(28, 22);
+		@include adaptiveValue("font-size", 22, 18);
+		line-height: 127.272727%; /* 28/22 */
+		font-weight: 700;
 		margin-bottom: rem(6);
-		@media (max-width: $tablet) {
-			font-size: rem(22);
-		}
 		&:hover {
 			text-decoration: underline;
 		}
@@ -237,22 +243,27 @@
 	&__text {
 		letter-spacing: rem(-0.3);
 		margin-bottom: rem(6);
+		color: #818181;
+		line-height: 1.5;
+		&:not(:last-child) {margin-bottom: rem(8);}
 	}
 	// .items-page__list
 	&__list {
 		font-size: rem(14);
 		line-height: rem(14);
 		color: #279653;
+		&:not(:last-child) {margin-bottom: rem(12);}
 	}
 	// .items-page__items
-	&__items {
+	&__descs {
 		display: flex;
 		flex-wrap: wrap;
 		column-gap: rem(17);
 		margin-bottom: rem(6);
+		font-weight: 600;
 	}
 	// .items-page__item
-	&__item {
+	&__desc {
 		&_1 {
 			color: #be20a5;
 		}
@@ -282,10 +293,10 @@
 		display: flex;
 		column-gap: rem(40);
 		justify-content: center;
-		@media (max-width: rem(1200)){
+		@media (max-width: rem(1200)) {
 			column-gap: rem(20);
 		}
-		@media (max-width:$tablet){
+		@media (max-width: $tablet) {
 			flex-wrap: wrap;
 			row-gap: rem(20);
 		}
@@ -293,22 +304,22 @@
 	// .step-success__card
 	&__card {
 		flex: 0 1 31.11%;
-		@media (max-width:$tablet){
+		@media (max-width: $tablet) {
 			flex: 0 1 48%;
 			//width: 100%;
 		}
-		@media (max-width:$mobile){
-			flex: 0 1 100%;  
+		@media (max-width: $mobile) {
+			flex: 0 1 100%;
 		}
 	}
 }
 
-.card {
+.card-step {
 	background: #f8f9fa;
 	display: flex;
 	align-items: center;
 	padding: rem(30);
-	@media (max-width: rem(1200)){
+	@media (max-width: rem(1200)) {
 		padding: rem(20);
 	}
 	// .card__image
@@ -351,7 +362,7 @@
 		// position: relative;
 		// &::before{
 		// 	content:'';
-		// 	position: absolute;		
+		// 	position: absolute;
 		// 	top: 0;
 		// 	left: 0;
 		// }
@@ -363,4 +374,149 @@
 
 //==== finish step-success ====================================================================================================================================================
 //====================================================================================================
+//==== start news-page ====================================================================================================================================================
+.news-page {
+	@include adaptiveValue("padding-top", 40, 20);
+	@include adaptiveValue("padding-bottom", 40, 20);
+	background: #f8f9fa;
+	// .news-page__container
+	&__container {
+	}
+	// .news-page__inner
+	&__inner {
+	}
+	// .news-page__title
+	&__title {
+		font-size: rem(14);
+		line-height: 1;
+		letter-spacing: 0.03em;
+		font-weight: 500;
+		text-transform: uppercase;
+		color: #279653;
+		&:not(:last-child) {
+			margin-bottom: rem(4);
+		}
+	}
+	// .news-page__subtitle
+	&__subtitle {
+		font-size: rem(20);
+		line-height: 130%; /* 26/20 */
+		color: #000000;
+		font-weight: 600;
+		&:not(:last-child) {
+			margin-bottom: rem(40);
+			@include adaptiveValue("margin-bottom", 40, 25);
+		}
+	}
+	// .news-page__content
+	&__content {
+		@media (min-width:$mobile){
+			display: flex;
+			gap: rem(20);
+			flex-wrap: wrap;
+			justify-content: center;
+		}
+	}
+	// .news-page__card
+	&__card {
+		flex: 0 1 100%;
+		@media (min-width:$mobile){
+			flex: 0 1 48.33%;
+		}
+		@media (min-width: rem(1200)){
+			max-width: rem(373);
+		}
+	}
+}
+
+.card-news {
+	display: flex;
+	flex-direction: column;
+	background-color: #fff;
+	// .card__image
+	&__image {
+		height: 81.5%;
+		width: 100%;
+		//flex: 0 1 31.08%;
+		overflow: hidden;
+		cursor: pointer;
+		img {
+			height: 100%;
+			width: 100%;
+			object-fit: cover;
+			transition: all 0.3s ease 0s; // увеличиваем картинку плавно
+		}
+		&:hover {
+			img {
+				transform: scale(1.2);
+			}
+		}
+		@media (max-width: $mobile) {
+			flex: 0 1 100%;
+			//margin-bottom: rem(15);
+		}
+	}
+	// .card__block
+	&__block {
+		padding: rem(32);
+		@include adaptiveValue("padding-top", 32, 15);
+		@include adaptiveValue("padding-bottom", 32, 15);  
+	}
+	// .card__title
+	&__title {
+		font-size: rem(22);
+		@include adaptiveValue("font-size", 22, 18);
+		line-height: 127.272727%; /* 28/22 */
+		font-weight: 700;
+		margin-bottom: rem(6);
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+	// .card__text
+	&__text {
+		flex: 1 1 auto;
+		letter-spacing: rem(-0.3);
+		margin-bottom: rem(6);
+		color: #818181;
+		line-height: 1.48;
+		&:not(:last-child) {margin-bottom: rem(8);}
+	}
+	// .card__list
+	&__list {
+		font-size: rem(14);
+		line-height: rem(14);
+		color: #279653;
+		&:not(:last-child) {margin-bottom: rem(12);}
+	}
+	// .card__descs
+	&__descs {
+		display: flex;
+		flex-wrap: wrap;
+		column-gap: rem(17);
+		row-gap: rem(7);
+		margin-bottom: rem(6);
+		font-weight: 600;
+	}
+	// .card__desc
+	&__desc {
+		&_1 {
+			color: #be20a5;
+		}
+		&:hover {
+			text-decoration: underline;
+		}		
+	}
+	// .card__data
+	&__data {
+		font-size: rem(14);
+		letter-spacing: rem(-0.3);
+		color: #b9b9b9;
+	}
+}
+//==== finish news-page ====================================================================================================================================================
+//====================================================================================================
 //==== start  ====================================================================================================================================================
+
+//==== finish  ====================================================================================================================================================
+
